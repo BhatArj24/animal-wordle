@@ -5,7 +5,10 @@
         <title>Waddle</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
         
         
     </head>
@@ -115,13 +118,13 @@
             var col = 0; //current letter for that attempt
             
             var gameOver = false;
-            // var word = "SQUID";
-            var wordList = ["bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra"];
+            
+            var wordList = ["bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
             
             
             var word = "TROUT";
-            // var word = "DINGO";
-            console.log(word);
+            
+            
             
             window.onload = function(){
                 intialize();
@@ -129,7 +132,7 @@
             
             
             function intialize() {
-                alert("This is Animal Wordle!");
+            
                 // Create the game board
                 for (let r = 0; r < height; r++) {
                     for (let c = 0; c < width; c++) {
@@ -137,6 +140,7 @@
                         let tile = document.createElement("span");
                         tile.id = r.toString() + "-" + c.toString();
                         tile.classList.add("tile");
+                        tile.classList.add("animate__animated");
                         tile.innerText = "";
                         document.getElementById("board").appendChild(tile);
                     }
@@ -238,6 +242,25 @@
                 guess = guess.toUpperCase(); //case sensitive
                 console.log(guess);
                 var list_length = wordList.length;
+                var count = 0;
+                console.log(wordList.length)
+                
+                for(i in wordList){
+                    count+=1;
+                    console.log(count);
+                    
+                    var current_thing = wordList[i];
+                    console.log(guess+" vs "+current_thing.toUpperCase());
+                    if (guess == current_thing.toUpperCase()){
+                        console.log("match");
+                        break
+                    }
+                    if(count==list_length){
+                        console.log("not in")
+                        document.getElementById("answer").innerText = "Not in word list";
+                        return;
+                    }
+                }
 
                
                 
@@ -266,6 +289,7 @@
                     //Is it in the correct position?
                     if (word[c] == letter) {
                         currTile.classList.add("correct");
+                        currTile.classList.add("animate__flipInX");
             
                         let keyTile = document.getElementById("Key" + letter);
                         keyTile.classList.remove("present");
@@ -290,16 +314,19 @@
                     if (!currTile.classList.contains("correct")) {
                         //Is it in the word?         //make sure we don't double count
                         if (word.includes(letter) && letterCount[letter] > 0) {
-                            currTile.classList.add("present");
+                            currTile.classList.add("present")
+                            currTile.classList.add("animate__flipInX");;
                             
                             let keyTile = document.getElementById("Key" + letter);
                             if (!keyTile.classList.contains("correct")) {
                                 keyTile.classList.add("present");
+                                
                             }
                             letterCount[letter] -= 1;
                         } // Not in the word or (was in word but letters all used up to avoid overcount)
                         else {
                             currTile.classList.add("absent");
+                            
                             let keyTile = document.getElementById("Key" + letter);
                             keyTile.classList.add("absent")
                         }
