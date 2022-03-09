@@ -119,7 +119,7 @@
             
             var gameOver = false;
             
-            var wordList = ["bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals","snake"];
+            var wordList = ["snake","bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
             
             
             var word = "TROUT";
@@ -240,23 +240,23 @@
                 }
             
                 guess = guess.toUpperCase(); //case sensitive
-                console.log(guess);
+                
                 var list_length = wordList.length;
                 var count = 0;
-                console.log(wordList.length)
+                
                 
                 for(i in wordList){
                     count+=1;
-                    console.log(count);
+                    
                     
                     var current_thing = wordList[i];
-                    console.log(guess+" vs "+current_thing.toUpperCase());
+                    
                     if (guess == current_thing.toUpperCase()){
-                        console.log("match");
+                        
                         break
                     }
                     if(count==list_length){
-                        console.log("not in")
+                        
                         document.getElementById("answer").innerText = "Not in word list";
                         return;
                     }
