@@ -119,13 +119,13 @@
         <script>
             var height = 6; //number of guesses
             var width = 5; //length of the word
-            
+            var switch_n = 0;
             var row = 0; //current guess (attempt #)
             var col = 0; //current letter for that attempt
             
             var gameOver = false;
             
-            var wordList = ["snail","crane","snake","bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
+            var wordList = ["crane","snake","bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
             
             
             var word = "CHIMP";
@@ -137,10 +137,18 @@
             }
             
             function switchBackground(){
-                var switch_n = 0;
+                
                 if(switch_n == 0){
                     document.body.style.backgroundColor = "grey";
                     switch_n+=1;
+                    document.getElementById("btn_switch").innerText = "Light Mode";
+                }
+                else if(switch_n == 1){
+                    document.body.style.backgroundColor = "white"
+                    switch_n-=1;
+                    document.getElementById("btn_switch").innerText = "Dark Mode";
+
+                    
                 }
                 
 
@@ -359,5 +367,5 @@
         <br>
         <h1 id="answer"></h1>
     </body>
-        <button onclick="switchBackground()" class="switch_b">Dark Mode</button>
+        <button id="btn_switch" onclick="switchBackground()" class="switch_b">Dark Mode</button>
 </html>
