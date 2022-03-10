@@ -239,6 +239,7 @@
                     if (0 < col && col <= width) {
                         col -=1;
                     }
+                    currTile.classList.remove("animate__bounceIn");
                     let currTile = document.getElementById(row.toString() + '-' + col.toString());
                     currTile.innerText = "";
                 }
