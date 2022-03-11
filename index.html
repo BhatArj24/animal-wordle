@@ -368,6 +368,8 @@
                 }
             
                 row += 1; //start new row
+                document.getElementById("score-1").innerHTML = "Guesses: "+row;
+
                 col = 0; //start at 0 for new row
                 document.getElementById("row"+row).innerHTML = guess_copy;
                 if(row<=5){
@@ -380,13 +382,14 @@
         <br>
         <div style="display:inline-block;">
             <div id="score" >
-                <div>Score</div>
+                <div id="score-1">Score</div>
                 <div id="row1"></div>
                 <div id="row2"></div>
                 <div id="row3"></div>
                 <div id="row4"></div>
                 <div id="row5"></div>
                 <div id="row6"></div>
+                <div>*******</div>
             </div>
         <div id="board">
         </div>
