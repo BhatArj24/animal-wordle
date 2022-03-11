@@ -117,6 +117,7 @@
 }
         </style>
         <script>
+            var guess_copy = "";
             var height = 6; //number of guesses
             var width = 5; //length of the word
             var switch_n = 0;
@@ -252,13 +253,14 @@
                 if (!gameOver && row == height) {
                     gameOver = true;
                     document.getElementById("answer").innerText = word;
+                    console.log(guess_copy);
                 }
             }
             
             function update() {
                 let guess = "";
                 document.getElementById("answer").innerText = "";
-            
+                
                 //string up the guesses into the word
                 for (let c = 0; c < width; c++) {
                     let currTile = document.getElementById(row.toString() + '-' + c.toString());
@@ -315,6 +317,7 @@
             
                     //Is it in the correct position?
                     if (word[c] == letter) {
+                        guess_copy = guess_copy+"🟩";
                         currTile.classList.add("correct");
                         currTile.classList.add("animate__flipInX");
             
@@ -341,11 +344,15 @@
                     if (!currTile.classList.contains("correct")) {
                         //Is it in the word?         //make sure we don't double count
                         if (word.includes(letter) && letterCount[letter] > 0) {
-                            currTile.classList.add("present")
-                            currTile.classList.add("animate__flipInX");;
+                            
+                            // currTile.classList.add("present")
+                            // currTile.classList.add("animate__flipInX");
                             
                             let keyTile = document.getElementById("Key" + letter);
                             if (!keyTile.classList.contains("correct")) {
+                                guess_copy = guess_copy+"🟨";
+                                currTile.classList.add("animate__flipInX");
+                                currTile.classList.add("present")
                                 keyTile.classList.add("present");
                                 
                             }
@@ -353,7 +360,7 @@
                         } // Not in the word or (was in word but letters all used up to avoid overcount)
                         else {
                             currTile.classList.add("absent");
-                            
+                            guess_copy = guess_copy+"🟫";
                             let keyTile = document.getElementById("Key" + letter);
                             keyTile.classList.add("absent")
                         }
@@ -362,13 +369,29 @@
             
                 row += 1; //start new row
                 col = 0; //start at 0 for new row
+                document.getElementById("row"+row).innerHTML = guess_copy;
+                if(row<=5){
+                    guess_copy = "";
+                }
+                
             }</script>
         <h1 id="title">Turtle</h1>
         <hr>
         <br>
+        <div style="display:inline-block;">
+            <div id="score" >
+                <div>Score</div>
+                <div id="row1"></div>
+                <div id="row2"></div>
+                <div id="row3"></div>
+                <div id="row4"></div>
+                <div id="row5"></div>
+                <div id="row6"></div>
+            </div>
         <div id="board">
         </div>
-
+        
+        </div>
         <br>
         <h1 id="answer"></h1>
     </body>
