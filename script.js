@@ -11,7 +11,7 @@
             
             
             var word = "MAMBA";
-//             word.toUpper()
+            console.log(word);
             
             
             
