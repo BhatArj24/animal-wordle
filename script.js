@@ -250,7 +250,7 @@
                 }
             
                 row += 1; //start new row
-                document.getElementById("score-1").innerHTML = "Guesses: "+row;
+                document.getElementById("score-1").innerHTML = "Guesses(3/11/22): "+row;
 
                 col = 0; //start at 0 for new row
                 document.getElementById("row"+row).innerHTML = guess_copy;
