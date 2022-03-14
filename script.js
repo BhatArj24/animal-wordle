@@ -4,7 +4,9 @@
             var switch_n = 0;
             var row = 0; //current guess (attempt #)
             var col = 0; //current letter for that attempt
-            
+            const d_1 = new Date();
+            var day = d.getDate();
+            var month = d.getMonth();
             var gameOver = false;
             
             var wordList = ["gator","foxes","bunny","viper","goose","snail","mamba","crane","snake","bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
@@ -248,9 +250,9 @@
                         }
                     }
                 }
-                var date = getDate();
+                
                 row += 1; //start new row
-                document.getElementById("score-1").innerHTML = "Guesses("+date+"): "+row;
+                document.getElementById("score-1").innerHTML = "Guesses("+month+"/"+date+"): "+row;
 
                 col = 0; //start at 0 for new row
                 document.getElementById("row"+row).innerHTML = guess_copy;
