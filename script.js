@@ -248,9 +248,9 @@
                         }
                     }
                 }
-            
+                var date = getDate();
                 row += 1; //start new row
-                document.getElementById("score-1").innerHTML = "Guesses(3/11/22): "+row;
+                document.getElementById("score-1").innerHTML = "Guesses("+date+"): "+row;
 
                 col = 0; //start at 0 for new row
                 document.getElementById("row"+row).innerHTML = guess_copy;
