@@ -11,7 +11,7 @@
             
             
             var word = "BRUIN";
-            console.log(word);
+            
             
             
             
