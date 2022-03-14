@@ -1,8 +1,8 @@
             var guess_copy = "";
             const d_object = new Date();
-            const day = d_object.getDate();
+            const day = d_object.getDate()+1;
             const month = d_object.getMonth();
-            console.log(`Date: ${String(month)}/${String(day)}`)
+            var date = `(${String(month)}/${String(day)})`;
             var height = 6; //number of guesses
             var width = 5; //length of the word
             var switch_n = 0;
