@@ -1,8 +1,10 @@
-            var guess_copy = "";
+            var score_str = "";
+            var score_list = ["","","","",""];
             const d_object = new Date();
-            const day = d_object.getDate()+1;
-            const month = d_object.getMonth();
-            var date = `(${String(month)}/${String(day)})`;
+            var day = d_object.getDate();
+            var month = d_object.getMonth()+1;
+            var year = d_object.getFullYear();
+            var date = `(${String(month)}/${String(day)}/${String(year)})`;
             var height = 6; //number of guesses
             var width = 5; //length of the word
             var switch_n = 0;
@@ -23,6 +25,13 @@
                 intialize();
             }
             
+            function compileScore(){
+                for(l in score_list){
+                    score_str = score_str+score_list[l];
+
+                }
+                return score_str;
+            }
             function switchBackground(){
                 
                 if(switch_n == 0){
@@ -139,7 +148,7 @@
                 if (!gameOver && row == height) {
                     gameOver = true;
                     document.getElementById("answer").innerText = word;
-                    console.log(guess_copy);
+                    
                 }
             }
             
@@ -194,7 +203,7 @@
                     }
                 }
             
-                // console.log(letterCount);
+                
             
                 //first iteration, check all the correct ones first
                 for (let c = 0; c < width; c++) {
@@ -203,7 +212,8 @@
             
                     //Is it in the correct position?
                     if (word[c] == letter) {
-                        guess_copy = guess_copy+"🟩";
+                        score_list[c] = "🟩";
+                        
                         currTile.classList.add("correct");
                         currTile.classList.add("animate__flipInX");
             
@@ -220,7 +230,7 @@
                     }
                 }
             
-                // console.log(letterCount);
+                
                 //go again and mark which ones are present but in wrong position
                 for (let c = 0; c < width; c++) {
                     let currTile = document.getElementById(row.toString() + '-' + c.toString());
@@ -235,18 +245,24 @@
                             // currTile.classList.add("animate__flipInX");
                             
                             let keyTile = document.getElementById("Key" + letter);
-                            if (!keyTile.classList.contains("correct")) {
-                                guess_copy = guess_copy+"🟨";
+                            
+                                score_list[c] = "🟨"; 
+                               
                                 currTile.classList.add("animate__flipInX");
                                 currTile.classList.add("present")
                                 keyTile.classList.add("present");
                                 
-                            }
+                            
                             letterCount[letter] -= 1;
                         } // Not in the word or (was in word but letters all used up to avoid overcount)
                         else {
+                            for(let c=0;c<width;c++){
+                                if(score_list[c]==""){
+                                    score_list[c] = "🟫";
+                                }
+                            }
                             currTile.classList.add("absent");
-                            guess_copy = guess_copy+"🟫";
+                           
                             let keyTile = document.getElementById("Key" + letter);
                             keyTile.classList.add("absent")
                         }
@@ -254,12 +270,13 @@
                 }
             
                 row += 1; //start new row
-                document.getElementById("score-1").innerHTML = "Guesses(3/11/22): "+row;
-
+                document.getElementById("score-1").innerHTML = "Guesses"+date+": "+row;
+                console.log(score_list);
                 col = 0; //start at 0 for new row
-                document.getElementById("row"+row).innerHTML = guess_copy;
+                document.getElementById("row"+row).innerHTML = compileScore();
                 if(row<=5){
-                    guess_copy = "";
+                    score_list = ["","","","",""]; 
+                    score_str = "";
                 }
                 
             }
