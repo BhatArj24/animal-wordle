@@ -11,6 +11,7 @@
             var row = 0; //current guess (attempt #)
             var col = 0; //current letter for that attempt
             var stats = localStorage.getItem("games-won");
+            var rec_word = localStorage.getItem("curr-word");
             
             if (stats==null){
                 stats = 0;
@@ -21,8 +22,11 @@
             var wordList = ["gator","foxes","bunny","viper","goose","snail","mamba","crane","snake","bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
             
             
-            var word = "HIPPO";
-            
+            var word = "BUCKS";
+            if(rec_word==word){
+                window.alert("You have already played the turtle!")
+                gameOver = true;
+            }
             
             
             
@@ -158,6 +162,7 @@
             }
             
             function update() {
+                localStorage.setItem("curr-word",word);
                 let guess = "";
                 document.getElementById("answer").innerText = "";
                 
