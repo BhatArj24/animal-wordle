@@ -22,7 +22,7 @@
             var wordList = ["mario","arjun","gator","foxes","bunny","viper","goose","snail","mamba","crane","snake","bison","bongo","bruin","camel","chimp","Dingo","Fitch","Hippo","Horse","Hyena","Koala","Lemur","Liger","Llama","Magot","Moose","Morse","Mouse","Okapi","Otter","Panda","Pongo","Puppy","Rhino","Sheep","Shrew","Skunk","Sloth","Swine","Tapir","Tiger","Vixen","Whale","Zebra","Trout","Squid","eagle","finch","heron","macaw","quail","raven","robin","owlet","shark","crabs","prawn","lambs","boars","bucks","deers","goats","hares","moles","orcas","seals"];
             
             
-            var word = "ORCAS";
+            var word = "PRAWN";
             if(rec_word==word){
                 window.alert("You have already played the turtle!")
                 gameOver = true;
